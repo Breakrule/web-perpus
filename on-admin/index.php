@@ -1,178 +1,147 @@
-<?php require('config.php');?>
-<?php require('check-login.php');?>
+<!--Cek Session-->
+<?php
+session_start();
+/**
+ * Jika Tidak login atau sudah login tapi bukan sebagai admin
+ * maka akan dibawa kembali kehalaman login atau menuju halaman yang seharusnya.
+ */
+if ( !isset($_SESSION['user_login']) || 
+    ( isset($_SESSION['user_login']) && $_SESSION['user_login'] != 'admin' ) ) {
+	header('location:./../login.php');
+	exit();
+}
+?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>-= Fake Library =-</title>
-	<link rel="stylesheet" type="text/css" href="../src/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="../src/css/style_.css">
-	<script type="text/javascript" src="../src/js/jQuery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="../src/js/bootstrap.js"></script>
-</head>
-<body class="bg-default" style="background-color:#fafafa">
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:#fff !important">
-	<img src="../src/img/logook.png">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <?php require('../config.php');?>
 
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="admin.php">Home <span class="sr-only">(current)</span></a>
-      </li>
-    </ul>
+    <!DOCTYPE html>
 
-    <ul class="navbar-nav mr-auto">
-    	<li class="nav-item active">
-    		<a href="?page=buku">Buku <span class="sr-only">(current)</span></a>		
-    	</li>
-    </ul>
-	<ul class="navbar-nav mr-auto">
-    	<li class="nav-item active">
-    		<a href="?page=user">User <span class="sr-only">(current)</span></a>		
-    	</li>
-    </ul>
-	<ul class="navbar-nav mr-auto">
-    	<li class="nav-item active">
-    		<a href="?page=anggota">Anggota <span class="sr-only">(current)</span></a>		
-    	</li>
-    </ul>
-    <ul class="navbar-nav mr-auto">
-    	<li class="nav-item active">
-    		<a href="?page=transaksi">Data Peminjaman <span class="sr-only">(current)</span></a>		
-    	</li>
-    </ul>
-    <ul class="navbar-nav mr-auto">
-    	<li class="nav-item active">
-    		<a href="?page=ulasan">Ulasan <span class="sr-only">(current)</span></a>		
-    	</li>
-    </ul>
-      <a class="btn btn-outline-success my-2 my-sm-0" href="../index.php">Keluar</a>
-</nav>
-		<div>
-<div>
-	<table width="100%" border="0">
-              <tr>
-                <td class="ket"><?php 
-			$page	= isset($_GET['page']) ? $_GET['page'] : "";
-			
-			if(strstr($page,"transaksi")) {
-			$j=".:: Menu Transaksi ::.";
-			} else if(strstr($page,"buku")) {
-			$j=".:: Menu Data Buku ::.";
-			} else if(strstr($page,"pengunjung")) {
-			$j=".:: Menu Data Pengunjung ::.";
-			} else if(strstr($page,"user")) {
-			$j=".:: Menu Data User ::.";
-			} else if(strstr($page,"laporan")) {
-			$j=".:: Menu Laporan ::.";
-			} else if(strstr($page,"anggota")) {
-			$j=".:: Menu Anggota ::.";
-			} else {
-			$j=".:: Selamat Datang di Halaman Administrator ::.";
-			} 
-			echo $j;
-		?></td>
-              </tr>
-            </table><hr />
-              <table width="100%" border="0" class="konten">
-                <tr>
-                </tr>
-              </table>
-            <p><span class="tengah">
-              <?php 
-	//menu transaksi
-	if($page=="transaksi") {
+    <html>
 
-	include "../transaksi/lihat_transaksi.php";
-	} else if($page=="input_transaksi") {
-	include "../transaksi/$page.php";
-	} else if($page=="act_input_transaksi") {
-	include "../transaksi/$page.php";
-	} else if($page=="act_kembali") {
-	include "../transaksi/$page.php";
-	} else if($page=="act_panjang") {
-	include "../transaksi/$page.php";
-	//======== akhir menu transaksi =========
-	
-	//menu buku
-	} else if($page=="buku") {
-	include "../buku/lihat_buku.php";
-	} else if($page=="input_buku") {
-	include "../buku/$page.php";
-	} else if($page=="act_input_buku") {
-	include "../buku/$page.php";
-	} else if($page=="edit_buku") {
-	include "../buku/$page.php";
-	} else if($page=="act_edit_buku") {
-	include "../buku/$page.php";
-	} else if($page=="act_hapus_buku") {
-	include "../buku/$page.php";
-	} else if($page=="detil_buku") {
-	include "../buku/$page.php";
-	}
-	//======== akhir menu buku ================
+    <head>
+        <title>PANEL ADMIN FAKE LIBRARY</title>
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+        <link rel="icon" href="../assets/image/find_user.png">
+        <style>
+            html,
+            body {
+                height: 100%;
+            }
 
-	//----menu laporan 
-	else if($page=="lap") {
-	include "../laporan/$page.php";
-	} else if($page=="lap_peminjaman") {
-	include "../laporan/$page.php";
-	} else if($page=="lap_pengunjung") {
-	include "../pengunjung/$page.php";
-	} else if($page=="edit_laporan") {
-	include "../laporan/$page.php";
-	} else if($page=="act_edit_laporan") {
-	include "../laporan/$page.php";
-	} else if($page=="act_hapus_laporan") {
-	include "../laporan/$page.php";
-	
-	//=============== akhir menu laporan =================
-	
-	// menu anggota
-	} else if($page=="anggota") {
-	include "../anggota/lihat_$page.php";
-	} else if($page=="input_anggota") {
-	include "../anggota/$page.php";
-	} else if($page=="act_input_anggota") {
-	include "../anggota/$page.php";
-	} else if($page=="edit_anggota") {
-	include "../anggota/$page.php";
-	} else if($page=="act_edit_anggota") {
-	include "../anggota/$page.php";
-	} else if($page=="act_hapus_anggota") {
-	include "../anggota/$page.php";
-	//============== akhir menu anggota ==================
-	
-	//menu user
-	} else if($page=="user") {
-	include "../user/lihat_user.php";
-	} else if($page=="input_user") {
-	include "../user/$page.php";
-	} else if($page=="act_input_user") {
-	include "../user/$page.php";
-	} else if($page=="edit_user") {
-	include "../user/$page.php";
-	} else if($page=="act_edit_user") {
-	include "../user/$page.php";
-	} else if($page=="act_hapus_user") {
-	include "../user/$page.php";
-	}
-	//==========  akhir menu user  =================
-	
-	//log out	
-	//log out	
-	else if($page=="logout") {
-	logout();
-	} else {
-	//echo $utama;
-	}
-	?>
-</div>
-	<div class="card-footer text-muted">
-		<small> ©Kelompok7- DPW B - Informatika IT Telkom PWT</small>
-	</div>
-</body>
-</html>
+            body {
+                background-image: url(../assets/image/bg2.jpg);
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                background-color: #999;
+            }
+
+            div,
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: exo, sans-serif;
+            }
+
+            .wrapper {
+                height: 100%;
+                width: 100%;
+            }
+
+            .message {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                width: 100%;
+                height: 45%;
+                bottom: 0;
+                display: block;
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.6);
+                color: #fff;
+                padding: 0.5em;
+            }
+
+            h1 {
+                text-align: center;
+                font-weight: bold;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-default navbar-inverse" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                    <a class="navbar-brand" href="#">FAKE LIBRARY</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Tambah Buku</a></li>
+                        <li><a href="#">Edit Buku</a></li>
+                        <li><a href="#">Daftar Peminjaman</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- menu login -->
+                        <li><a href="../logout.php" data-toggle="modal" data-target="#"><b>Logout</b></a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <!-- body text-->
+        <div class="container">
+            <h1>ADMIN PANEL</h1>
+        </div>
+        <!-- Modal -->
+        <!--
+        <div id="modallogout" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                        <h4 class="modal-title">Login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- form login
+                        <form action="logout.php" method="post">
+                            <div class="form-group">
+                                <label for="nama_pengguna">Username</label>
+                                <input type="text" name="nama_pengguna" placeholder="Username" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="kata_kunci">Password</label>
+                                <input type="text" name="kata_kunci" placeholder="Password" class="form-control" />
+                            </div>
+                            <div class="text-right">
+                                <button class="btn btn-danger" type="submit">Logout</button>
+                            </div>
+                        </form>
+                        <!-- end form login
+                    </div>
+                </div>
+                <!-- /.modal-content
+            </div>
+            <!-- /.modal-dialog
+        </div>
+        <!-- /.modal -->
+        <script src="../assets/js/jquery-3.2.1.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+    </body>
+
+    </html>
