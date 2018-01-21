@@ -86,7 +86,6 @@ if ( !isset($_SESSION['user_login']) ||
                 background-color: white;
                 color: black;
             }
-
         </style>
 
     </head>
@@ -111,8 +110,7 @@ if ( !isset($_SESSION['user_login']) ||
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a class="active" href="#">List Buku</a></li>
-                        <li><a href="peminjaman.php">Peminjaman</a></li>
+                        <li><a class="active" href="index.php">List Buku</a></li>
                         <li><a href="abstrak_buku.php">Ulasan</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -125,54 +123,34 @@ if ( !isset($_SESSION['user_login']) ||
             <!-- /.container-fluid -->
         </nav>
         <!-- body text-->
-        <div class="container">
-            <h1>KOLEKSI KAMI</h1>
-        </div>
-        <!-- Start list buku -->
-        <div id="page">
-            <!-- start content -->
-            <div id="content">
-                <div class="post">
-                    <h1 class="title"></h1>
-                    <div class="entry">
-
-                        <table border='1' WIDTH='100%'>
-                            <tr>
-                                <TD style="color:darkgreen" WIDTH='8%'><b><u>ID BUKU</u></b></TD>
-                                <TD style="color:darkgreen" WIDTH='30%'><b><u>JUDUL</u></b></TD>
-                                <TD style="color:darkgreen" WIDTH='10%'><b><u>JUMLAH</u></b></TD>
-                                <TD style="color:darkgreen" WIDTH='20%'><b><u>PENERBIT</u></b></TD>
-                                <TD style="color:darkgreen" WIDTH='20%'><b><u>PENULIS</u></b></TD>
-                                <TD style="color:darkgreen" WIDTH='50%'><b><u>DESKRIPSI</u></b></TD>
-                                <TD style="color:darkgreen" WIDTH='25%'><b><u>IMAGE</u></b></TD>
-
-                            </tr>
-                            <?php
-							$count=1;
-							while($row=mysqli_fetch_assoc($res))
-							{
-							echo '<tr>
-										<td>'.$count.'
-										<td>'.$row['judul'].'
-                                        <td>'.$row['jumlah'].'
-										<td>'.$row['penerbit'].'
-										<td>'.$row['penulis'].'
-										<td>'.$row['deskripsi'];
-				echo "<td><img src='../$row[path_gambar]' width='50'/>";                                        
-									$count++;
-                            if ($row["jumlah"]> 0){
-                            echo "<li style='list-style: none;' ><input type='submit' onclick='pinjam(".$row["id_buku"].",".$_SESSION["user_login"].");' name='submit' value='Pinjam' ></li>";
-                            }
-							}
-						?>
-
-                        </table>
-
+        <div class="card" style="margin-top:1rem;margin-bottom:1rem">
+            <div class="card-body bg-info text-black">
+                <div class="text-center">
+                    <div class="container">
+                        <h1>DAFTAR BUKU YANG DI PINJAM</h1>
                     </div>
+                    <?php
+        $query = "SELECT peminjaman.id_pinjam, peminjaman.id_buku, peminjaman.id_pengguna, buku.path_gambar, buku.judul FROM peminjaman INNER JOIN buku ON peminjaman.id_buku=buku.id_buku AND peminjaman.id_pengguna=".$_SESSION["user_login"];
+
+        $result = $conn->query($query);
+        if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+
+        echo "<img class='imgl borderedbox inspace-5' src='".$row["path_gambar"]."'alt=''>
+        <strong>ID Buku  :</strong>".$row["id_buku"]."</p><p>
+        <strong>Judul    :</strong>".$row["judul"]."<p>
+        <div class='block clear'>
+        <center><div><input type='submit' onclick='kembalikan(".$row["id_pinjam"].",".$row["id_buku"].");' name='submit' value='kembalikan'>    </form></div></div></center>
+        <div class='scrollable'>
+        </div><br><br><br>";
+
+            }
+        }
+        $conn->close();
+         ?>
                 </div>
             </div>
         </div>
-        <!-- end list buku -->
         <script src="../assets/js/jquery-3.2.1.js"></script>
         <script src="../assets/js/bootstrap.min.js"></script>
         <script src="../assets/js/script_pinjam.js"></script>

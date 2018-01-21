@@ -1,0 +1,13 @@
+1. Membuat Web dengan php7 dan Database PDO mySqli tahun 2010 pengarang anton subagia penerbit gramedia abstrak berisikan pengetahuan pemprograman php7, pembuatan database dan table dengan heidiSQL dan studi kasus pembuatan blog serta toko online menggunakan PHP dan Bootstrap. 
+2. Algoritma & Pemrograman dalam bahasa pascal dan C tahun 2011 pengarang rinaldi munir penerbil Informatika abstrak berisikan penjelasan pemprograman dan algoritma bahasa c dan pascal serta dilengkapi dengan study kasus.
+3.Kreasi photoshop cs 3 tahun 2009 pengarang Ebhie Febrian penerbit cerdas komputer abstrak tutorial editting menggunakan photoshop cs 3 untuk pemula dan terdapat beberapa contoh hasil edittan.
+4. A Teaspoon of Earth and Sea pengarang Dina Nayeri tahun 2015 penerbit loveble  abstrak menceritakan seorang gadis yang sedang merasakan jatuh cinta namun mengalami kebimbangan karena merasa kecil diatara dunia ini.
+5. Modern Architecture Volume 2 Edisi 6 tahun 2011 penulis Armando Brandon penerbit gramedia abstrak  berisikan panduan pembuatan gambar gedung yang modern dan disertai contoh
+6.Mind blown creativity tahun 2015 penulis Susan Williams penerbit gramedia abstrak  membuka pikiran agar lebih kreatif dan terinspirasi dalam mendesign
+7.All the light we cannot see tahun 2013 penulis Anthony doerr penerbit gramedia abstrak  novel tentang petualang seorang pemuda
+8.the boy with the tigers heart creativity tahun 2014 penulis Linda coggin penerbit gramedia abstrak  novel tentang petualang seorang pemuda yang memiliki sahabat seekor macan yang dirawat sejak kecil
+9.3d animation movie tahun 2012 produksi informatika penerbit gramedia abstrak  membuka pikiran agar lebih kreatif dan terinspirasi dalam mendesign dan menggunakan 3d studiomax
+10.English for computer science tahun 2015 penerbit gramedia abstrak  untuk memahami inggris untuk komputer sains
+11.Oracle sql &PL/SQL penulis Imam haryono & Budi rahardjo penerbit inmformatika abstrak  TENTANG pembuatan data base dengan oracle,sql disertai tutorial
+12Etika Komputer tahun 2013 penulis TEguh wahyono penerbit gramedia abstrak  tentang tanggung jawab secara profesional di bidang IT
+13.Dilan tahun 2010 penulis pidi baiq penerbit pidi baiq books abstrak  tentang kisah cinta dua pemuda pemudi saat SMA 

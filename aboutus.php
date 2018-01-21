@@ -9,12 +9,10 @@
 
 <body class="bg-default" style="background-color:#fafafa">
 
-	<img src="assets/image/aboutus.png">
+	<img src="assets/image/aboutus.jpg">
 				  <div class="card-footer text-muted">
 				    <small> ©Kelompok7- DPW B - Informatika IT Telkom PWT</small>
 				  </div>
-				</div>
-	    </div>
 	    <div class="col-md-2">
 	    </div>
 </body>

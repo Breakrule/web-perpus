@@ -46,6 +46,7 @@
             color: #fff;
             padding: 0.5em;
         }
+
         h1 {
             text-align: center;
             font-weight: bold;
@@ -104,42 +105,10 @@
     </nav>
     <!-- body text-->
     <div class="container">
-        <marquee><h1>SELAMAT DATANG DI FAKE LIBRARY</h1></marquee>
+        <marquee>
+            <h1>SELAMAT DATANG DI FAKE LIBRARY</h1>
+        </marquee>
     </div>
-    <!-- Modal -->
-    <!--
-        <div id="modallogout" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-                        <h4 class="modal-title">Login</h4>
-                    </div>
-                    <div class="modal-body">
-                        <!-- form login
-                        <form action="logout.php" method="post">
-                            <div class="form-group">
-                                <label for="nama_pengguna">Username</label>
-                                <input type="text" name="nama_pengguna" placeholder="Username" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <label for="kata_kunci">Password</label>
-                                <input type="text" name="kata_kunci" placeholder="Password" class="form-control" />
-                            </div>
-                            <div class="text-right">
-                                <button class="btn btn-danger" type="submit">Logout</button>
-                            </div>
-                        </form>
-                        <!-- end form login
-                    </div>
-                </div>
-                <!-- /.modal-content
-            </div>
-            <!-- /.modal-dialog
-        </div>
-        <!-- /.modal -->
     <script src="assets/js/jquery-3.2.1.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
 </body>

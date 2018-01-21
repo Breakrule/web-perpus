@@ -1,0 +1,32 @@
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `peminjaman`
+--
+
+CREATE TABLE `peminjaman` (
+  `id_pinjam` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `id_buku` int(10) DEFAULT NULL,
+  `id_pengguna` int(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `ulasan`
+--
+
+CREATE TABLE `ulasan` (
+  `id_ulasan` int(5) NOT NULL,
+  `id_buku` int(10) DEFAULT NULL,
+  `id_pengguna` int(5) DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
+  `isi` varchar(800) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ulasan`
+--
+
+INSERT INTO `ulasan` (`id_ulasan`, `id_buku`, `id_pengguna`, `tanggal`, `isi`) VALUES
+(1, 1, 1, '2018-01-21', 'sangat membantu'),
+(2, 2, 2, '2018-01-21', 'cukup menarik'),
+(3, 3, 2, '2018-01-21', 'keren juga');

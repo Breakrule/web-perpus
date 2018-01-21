@@ -5,7 +5,6 @@ require('config.php');
 		
 			mysqli_query($conn,$query) or die("can't Execute...");
 			
-			
 			header("location:index.php.php");
 
 ?>

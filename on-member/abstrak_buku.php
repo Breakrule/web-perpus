@@ -111,9 +111,8 @@ if ( !isset($_SESSION['user_login']) ||
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a class="active" href="#">List Buku</a></li>
+                        <li><a class="active" href="index.php">List Buku</a></li>
                         <li><a href="peminjaman.php">Peminjaman</a></li>
-                        <li><a href="abstrak_buku.php">Ulasan</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <!-- menu login -->
@@ -124,55 +123,79 @@ if ( !isset($_SESSION['user_login']) ||
             </div>
             <!-- /.container-fluid -->
         </nav>
-        <!-- body text-->
-        <div class="container">
-            <h1>KOLEKSI KAMI</h1>
-        </div>
-        <!-- Start list buku -->
-        <div id="page">
-            <!-- start content -->
-            <div id="content">
-                <div class="post">
-                    <h1 class="title"></h1>
-                    <div class="entry">
+        <?php 
+require ("config.php");
+$id_buku = $_GET["id_buku"];
+$ibook = $_GET["id_buku"];
+$jumlah;
+$query = "SELECT * FROM buku WHERE id_buku=".$id_buku;
 
-                        <table border='1' WIDTH='100%'>
-                            <tr>
-                                <TD style="color:darkgreen" WIDTH='8%'><b><u>ID BUKU</u></b></TD>
-                                <TD style="color:darkgreen" WIDTH='30%'><b><u>JUDUL</u></b></TD>
-                                <TD style="color:darkgreen" WIDTH='10%'><b><u>JUMLAH</u></b></TD>
-                                <TD style="color:darkgreen" WIDTH='20%'><b><u>PENERBIT</u></b></TD>
-                                <TD style="color:darkgreen" WIDTH='20%'><b><u>PENULIS</u></b></TD>
-                                <TD style="color:darkgreen" WIDTH='50%'><b><u>DESKRIPSI</u></b></TD>
-                                <TD style="color:darkgreen" WIDTH='25%'><b><u>IMAGE</u></b></TD>
+$result = $conn->query($query);
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
 
-                            </tr>
-                            <?php
-							$count=1;
-							while($row=mysqli_fetch_assoc($res))
-							{
-							echo '<tr>
-										<td>'.$count.'
-										<td>'.$row['judul'].'
-                                        <td>'.$row['jumlah'].'
-										<td>'.$row['penerbit'].'
-										<td>'.$row['penulis'].'
-										<td>'.$row['deskripsi'];
-				echo "<td><img src='../$row[path_gambar]' width='50'/>";                                        
-									$count++;
-                            if ($row["jumlah"]> 0){
-                            echo "<li style='list-style: none;' ><input type='submit' onclick='pinjam(".$row["id_buku"].",".$_SESSION["user_login"].");' name='submit' value='Pinjam' ></li>";
-                            }
-							}
-						?>
+    echo "  <img class='imgl borderedbox inspace-5' src='".$row["path_gambar"]."' alt=''>
+      <strong id='id_buku'>ID       :".$row["id_buku"]."</strong><p>
+      <strong>Judul    :</strong>".$row["judul"]."<p>
+      <strong>Penulis  :</strong>".$row["penulis"]."</p><p>
+      <strong>Penerbit :</strong>".$row["penerbit"]."</p><p>
+      <strong>Jumlah   :</strong>".$row["jumlah"]."</p><p>
+      <strong>Deskripsi:</strong></p><p>".$row["deskripsi"]."</p>";
+$jumlah = $row["jumlah"];
+} 
+}
+$conn->close();
+      ?>
 
-                        </table>
+        <div id="comments">
+            <h2>Comments</h2>
+            <ul>
+                <?php 
+          require ("config.php");
+             $query = "SELECT ulasan.id_ulasan, ulasan.id_buku,ulasan.id_pengguna, ulasan.tanggal, ulasan.isi, pengguna.nama_pengguna FROM ulasan  INNER JOIN pengguna on ulasan.id_pengguna = pengguna.id_pengguna and ulasan.id_buku=".$id_buku;
+            
+                        $result = $conn->query($query);
+if ($result->num_rows > 0) {
+   while($row = $result->fetch_assoc()) {
 
-                    </div>
+echo "<li>
+            <article>
+              <header>
+                <address>
+                By <a href='#'>".$row["nama_pengguna"]."</a>
+                </address>
+                <time datetime=''>".$row["tanggal"]."</time>
+              </header>
+              <div class='comcont'>
+                <p>".$row["isi"]."</p>
+              </div>
+            </article>
+          </li>";
+
+}}
+            $conn->close();
+          ?>
+
+
+            </ul>
+            <?php
+          
+          if (isLogin()){
+            echo "<input type='hidden' name='id_pengguna' id='id_pengguna' value='".$_SESSION["id_pengguna"]."'>";
+            echo "<input type='hidden' name='id_pengguna' id='id_bukubaru' value='".$ibook."'>";
+             
+          }
+         ?>
+                <h2>Write A Comment</h2>
+                <div class="block clear">
+                    <label for="comment">Your Comment</label>
+                    <textarea name="comment" id="comment" cols="25" rows="10"></textarea>
                 </div>
-            </div>
+                <div>
+                    <input type="submit" name="submit" onclick="sendUlasan();"value="Submit Form"> &nbsp;
+                    <input type="reset" name="reset" value="Reset Form">
+                </div>
         </div>
-        <!-- end list buku -->
         <script src="../assets/js/jquery-3.2.1.js"></script>
         <script src="../assets/js/bootstrap.min.js"></script>
         <script src="../assets/js/script_pinjam.js"></script>
