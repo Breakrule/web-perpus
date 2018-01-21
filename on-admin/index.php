@@ -5,6 +5,13 @@ session_start();
  * Jika Tidak login atau sudah login tapi bukan sebagai admin
  * maka akan dibawa kembali kehalaman login atau menuju halaman yang seharusnya.
  */
+
+require('../on-admin/config.php');
+
+$q="select * from buku";
+$res=mysqli_query($conn,$q) or die("Can't Execute Query...");
+
+
 if ( !isset($_SESSION['user_login']) || 
     ( isset($_SESSION['user_login']) && $_SESSION['user_login'] != 'admin' ) ) {
 	header('location:./../login.php');
@@ -68,6 +75,22 @@ if ( !isset($_SESSION['user_login']) ||
                 font-weight: bold;
                 color: white;
             }
+
+            table {
+                padding: 5px;
+                border: 10px solid gray
+            }
+
+            td,
+            th {
+                padding: 15px
+            }
+
+            tr {
+                background-color: white;
+                color: black;
+            }
+
         </style>
     </head>
 
@@ -106,40 +129,52 @@ if ( !isset($_SESSION['user_login']) ||
         <div class="container">
             <h1>ADMIN PANEL</h1>
         </div>
-        <!-- Modal -->
-        <!--
-        <div id="modallogout" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-                        <h4 class="modal-title">Login</h4>
-                    </div>
-                    <div class="modal-body">
-                        <!-- form login
-                        <form action="logout.php" method="post">
-                            <div class="form-group">
-                                <label for="nama_pengguna">Username</label>
-                                <input type="text" name="nama_pengguna" placeholder="Username" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <label for="kata_kunci">Password</label>
-                                <input type="text" name="kata_kunci" placeholder="Password" class="form-control" />
-                            </div>
-                            <div class="text-right">
-                                <button class="btn btn-danger" type="submit">Logout</button>
-                            </div>
-                        </form>
-                        <!-- end form login
+        <!-- list buku -->
+        <div id="page">
+            <!-- start content -->
+            <div id="content">
+                <div class="post">
+                    <h1 class="title"></h1>
+                    <div class="entry">
+
+                        <table border='1' WIDTH='100%'>
+                            <tr>
+                                <td colspan="7"><a href="tambah_buku.php">Tambah Buku Baru</a></td>
+                            </tr>
+                            <tr>
+                                <td WIDTH='10%' style="color:darkgreen"><b><u>ID BUKU</u></b></td>
+                                <TD style="color:darkgreen" WIDTH='30%'><b><u>JUDUL</u></b></TD>
+                                <TD style="color:darkgreen" WIDTH='20%'><b><u>PENERBIT</u></b></TD>
+                                <TD style="color:darkgreen" WIDTH='20%'><b><u>PENULIS</u></b></TD>
+                                <TD style="color:darkgreen" WIDTH='50%'><b><u>DESKRIPSI</u></b></TD>
+                                <TD style="color:darkgreen" WIDTH='25%'><b><u>IMAGE</u></b></TD>
+                                <TD style="color:darkgreen" WIDTH='25%'><b><u>DELETE</u></b></TD>
+
+                            </tr>
+                            <?php
+							$count=1;
+							while($row=mysqli_fetch_assoc($res))
+							{
+							echo '<tr>
+										<td>'.$count.'
+										<td>'.$row['judul'].'
+										<td>'.$row['penerbit'].'
+										<td>'.$row['penulis'].'
+										<td>'.$row['deskripsi'];
+				echo "<td><img src='../$row[path_gambar]' width='50'/>";
+                                echo 	'<td><a href="delete_buku.php'.$row['id_buku'].'"><img src="../assets/icons/drop.png" ></a>
+									</tr>';
+									$count++;
+							}
+						?>
+
+                        </table>
+
                     </div>
                 </div>
-                <!-- /.modal-content
             </div>
-            <!-- /.modal-dialog
         </div>
-        <!-- /.modal -->
+        <!-- list buku -->
         <script src="../assets/js/jquery-3.2.1.js"></script>
         <script src="../assets/js/bootstrap.min.js"></script>
     </body>
