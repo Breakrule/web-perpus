@@ -70,3 +70,26 @@ INSERT INTO `kategori` (`kat_id`, `kat_nm`) VALUES
 (3, 'programming'),
 (4, 'drama'),
 (5, 'umum');
+
+-- Table structure for table `subcat`
+--
+
+CREATE TABLE IF NOT EXISTS `subkat` (
+  `subkat_id` int(4) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(4) NOT NULL,
+  `subkat_nm` varchar(35) NOT NULL,
+  PRIMARY KEY (`subcat_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+
+--
+-- Dumping data for table `subcat`
+--
+
+INSERT INTO `subkat` (`subkat_id`, `parent_id`, `subkat_nm`) VALUES
+(1, 1, 'aksi'),
+(2, 2, 'romantis'),
+(3, 3, 'programming'),
+(4, 4, 'drama'),
+(5, 5, 'umum');
+
+-- --------------------------------------------------------

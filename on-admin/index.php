@@ -162,7 +162,7 @@ if ( !isset($_SESSION['user_login']) ||
 										<td>'.$row['penulis'].'
 										<td>'.$row['deskripsi'];
 				echo "<td><img src='../$row[path_gambar]' width='50'/>";
-                                echo 	'<td><a href="delete_buku.php'.$row['id_buku'].'"><img src="../assets/icons/drop.png" ></a>
+                                echo 	'<td><a href="delete_buku.php?sid='.$row['id_buku'].'"><img src="../assets/icons/drop.png" ></a>
 									</tr>';
 									$count++;
 							}
