@@ -4,8 +4,8 @@
 
 <head>
     <title>FAKE LIBRARY LOGIN</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="icon" href="assets/image/logook.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="icon" href="image/logook.png">
     <style>
         html,
         body {
@@ -13,7 +13,7 @@
         }
 
         body {
-            background-image: url(assets/image/bg1.jpg);
+            background-image: url(image/bg1.jpg);
             background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -109,8 +109,8 @@
             <h1>SELAMAT DATANG DI FAKE LIBRARY</h1>
         </marquee>
     </div>
-    <script src="assets/js/jquery-3.2.1.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

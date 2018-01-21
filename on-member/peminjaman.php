@@ -23,8 +23,8 @@ if ( !isset($_SESSION['user_login']) ||
 
     <head>
         <title>FAKE LIBRARY MEMBER</title>
-        <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-        <link rel="icon" href="../assets/image/find_user.png">
+        <link rel="stylesheet" href="../css/bootstrap.min.css" />
+        <link rel="icon" href="../image/find_user.png">
         <style>
             html,
             body {
@@ -32,7 +32,7 @@ if ( !isset($_SESSION['user_login']) ||
             }
 
             body {
-                background-image: url(../assets/image/bg2.jpg);
+                background-image: url(../image/bg2.jpg);
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
@@ -151,9 +151,9 @@ if ( !isset($_SESSION['user_login']) ||
                 </div>
             </div>
         </div>
-        <script src="../assets/js/jquery-3.2.1.js"></script>
-        <script src="../assets/js/bootstrap.min.js"></script>
-        <script src="../assets/js/script_pinjam.js"></script>
+        <script src="../js/jquery-3.2.1.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/script_pinjam.js"></script>
     </body>
 
     </html>

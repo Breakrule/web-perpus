@@ -8,18 +8,18 @@ require('config.php');
 
 <head>
     <title>Tambah Koleksi Buku</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
-    <script type="text/javascript" src="../assets/js_bootstrap_4/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="../assets/js_bootstrap_4/bootstrap.js"></script>
-    <script type="text/javascript" src="../assets/js/ajax.js"></script>
-    <link rel="icon" href="../assets/image/find_user.png">
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <script type="text/javascript" src="../js_bootstrap_4/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../js_bootstrap_4/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/ajax.js"></script>
+    <link rel="icon" href="../image/find_user.png">
     <style>
         footer {
             color: white;
         }
 
         body {
-            background-image: url(../assets/image/bg2.jpg);
+            background-image: url(../image/bg2.jpg);
             background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;

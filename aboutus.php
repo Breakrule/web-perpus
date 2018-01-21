@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>About Us</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap1.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 <!-- Navbar -->
 
