@@ -5,7 +5,7 @@
 <head>
     <title>FAKE LIBRARY LOGIN</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="icon" href="assets/img/logook.png">
+    <link rel="icon" href="assets/image/logook.png">
     <style>
         body{
             background-color: darkgoldenrod;
