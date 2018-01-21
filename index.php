@@ -77,7 +77,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="contact.html">Kontak Kami</a></li>
-                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="aboutus.php">Tentang Kami</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kategori <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
